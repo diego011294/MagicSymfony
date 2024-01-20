@@ -11,31 +11,19 @@
         crossorigin="anonymous"></script>
 </head>
 <body class= "bg-dark">
-     <div class="container mt-5 text-white">
+    <div class="container mt-5 text-white">
         <h1 class="text-center text-warning mb-5">{{ appName }}</h1>
-
-        <h1 class="text-center">Número Mágico</h1>
-        <h2 class="text-center mt-3">
-            Tu número mágico es: <span class="magic-number 
-                         {% if magicNumber is even %}
-                         text-primary
-                         {% else %}
-                         text-danger
-                         {% endif %} 
-                         display-6">
-                {{ magicNumber }}
-            </span>
-        </h2>
+         <h1 class="text-center">Palabra Mágica</h1>
         <p class="text-center mt-3">
-            Este número te traerá muy buena suerte.
+            El número mágico está asociado a la palabra mágica: <strong class= "display-5 text-primary">{{ magicWord }}</strong>.
         </p>
         <p class="text-center mt-3">
-            ¿Quieres conocer la palabra mágica asociada a este número?
-            <a href="{{ path('magic_word', {'number': magicNumber}) }}">Haz clic aquí</a>.
+            Esta palabra te traerá mucha suerte. ¿Quieres conocer su significado?
+            <a>Haz clic aquí</a>.
         </p>
         <div class="text-center mt-4">
             <a href="{{ path('magic_number') }}" class="btn btn-primary btn-lg">Escoger otro número mágico</a>
-        </div>
+
     </div>
 </body>
 
