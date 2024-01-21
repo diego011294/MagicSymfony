@@ -79,10 +79,42 @@ class MagicController extends AbstractController{
 
 
         return $this->render('dictionary.html.twig',[
-            'magicNumber' => $number,
-            'magicWord' => $word,
+            'word' => $uppercaseWord,
+            'definition' => $this->getDefinition($uppercaseWord),
             'appName' => 'DGRMagicSymfony',
         ]);
+    }
+
+    private function getDefinition($word){
+        $definitions = [
+            'AMISTAD' => 'La amistad es una relación afectiva entre dos o más personas.',
+            'ÉXITO' => 'El éxito es la consecución de los objetivos y metas propuestas.',
+            'FELICIDAD' => 'La felicidad es un estado emocional de bienestar y satisfacción.',
+            'PROSPERIDAD' => 'La prosperidad es el estado de tener éxito y ser próspero en la vida.',
+            'AMOR' => 'El amor es un sentimiento profundo de afecto y cariño hacia otra persona.',
+            'CREATIVIDAD' => 'La creatividad es la capacidad de generar nuevas ideas o conceptos originales.',
+            'CONFIANZA' => 'La confianza es la seguridad y fe en las acciones o palabras de alguien.',
+            'SALUD' => 'La salud es el estado de completo bienestar físico, mental y social.',
+            'ABUNDANCIA' => 'La abundancia es la presencia en gran cantidad de algo valioso.',
+            'GRATITUD' => 'La gratitud es la acción de expresar agradecimiento y aprecio hacia algo o alguien.',
+            'PAZ' => 'La paz es un estado de tranquilidad y ausencia de conflicto.',
+            'ALEGRÍA' => 'La alegría es una emoción positiva y placentera.',
+            'GENEROSIDAD' => 'La generosidad es la disposición a dar y ayudar a los demás.',
+            'AVENTURA' => 'La aventura es una experiencia emocionante y arriesgada.',
+            'OPTIMISMO' => 'El optimismo es la actitud positiva y la esperanza en un resultado favorable.',
+            'HARMONÍA' => 'La harmonía es la combinación equilibrada de diferentes elementos.',
+            'ESPERANZA' => 'La esperanza es la creencia y expectativa positiva hacia el futuro.',
+            'ÉXITO' => 'El éxito es la consecución de los objetivos y metas propuestas.',
+            'SERENIDAD' => 'La serenidad es la calma y paz interior en situaciones difíciles.',
+            'RIQUEZA' => 'La riqueza es la abundancia de recursos valiosos.',
+            'AMABILIDAD' => 'La amabilidad es la cualidad de ser amable y afectuoso.',
+            'HUMILDAD' => 'La humildad es la virtud de reconocer las propias limitaciones y ser modesto.',
+            'SABIDURÍA' => 'La sabiduría es el conocimiento profundo y la capacidad de aplicar la experiencia.',
+            'SIMPLICIDAD' => 'La simplicidad es la cualidad de ser simple y fácil de entender.',
+            'RESILIENCIA' => 'La resiliencia es la capacidad de superar adversidades y adaptarse al cambio.',
+        ];
+
+        return $definitions[$word] ?? 'No hay definición disponible.';
     }
     
 }

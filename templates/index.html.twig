@@ -11,13 +11,16 @@
         crossorigin="anonymous"></script>
 </head>
 <body class= "bg-dark">
+<div class= "container d-flex align-items-center justify-content-center gap-5 mt-3">
+    <img src="{{ asset('images/logo.jpeg') }}" alt="logo">
+    <h1 class="text-center mb-5"><a class="text-decoration-none text-warning" href="{{ path('index') }}">{{ appName }}</a></h1>
+</div>
 <div class="container mt-5 text-white">
-        <h1 class="text-center text-warning mb-5">{{ appName }}</h1>
         <h2 class="text-center mt-3">
             Escoge el número mágico que te traerá suerte y fortuna. Si estás preparado/a para este evento, pulsa el botón.
         </h2>
         <div class="text-center mt-4">
-            <a href="{{ path('magic_number') }}" class="btn btn-primary btn-lg">¡Escoger número mágico!</a>
+            <a href="{{ path('magic_number') }}" class="btn btn-success btn-lg">¡Escoger número mágico!</a>
         </div>
     </div>
 </body>

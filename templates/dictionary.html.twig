@@ -9,33 +9,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-
-        
 </head>
 <body class= "bg-dark">
     <div class= "container d-flex align-items-center justify-content-center gap-5 mt-3">
         <img src="{{ asset('images/logo.jpeg') }}" alt="logo">
          <h1 class="text-center mb-5"><a class="text-decoration-none text-warning" href="{{ path('index') }}">{{ appName }}</a></h1>
-    </div>               
-     <div class="container mt-5 text-white">
-        <h1 class="text-center">Número Mágico</h1>
-        <h2 class="text-center mt-3">
-            Tu número mágico es: <span class="magic-number 
-                         {% if magicNumber is even %}
-                         text-primary
-                         {% else %}
-                         text-danger
-                         {% endif %} 
-                         display-6">
-                {{ magicNumber }}
-            </span>
-        </h2>
+    </div>    
+    <div class="container mt-5 text-white">     
+     <h1 class="text-center">Diccionario</h1>
         <p class="text-center mt-3">
-            Este número te traerá muy buena suerte.
+            Palabra: <strong class= "bg-primary rounded p-2">{{ word }}</strong>
         </p>
         <p class="text-center mt-3">
-            ¿Quieres conocer la palabra mágica asociada a este número?
-            <a class="btn btn-primary" href="{{ path('magic_word', {'number': magicNumber}) }}">Haz clic aquí <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+            Definición:
+        </p>
+        <p class="text-center mt-3">
+            <strong>
+            {{ definition }}
+            </strong>
         </p>
         <div class="text-center mt-4">
             <a href="{{ path('magic_number') }}" class="btn btn-success btn-lg">Escoger otro número mágico</a>
