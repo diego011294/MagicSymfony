@@ -62,8 +62,12 @@ class MagicController extends AbstractController{
     public function magicWord($number): Response{
         $word = $this->magicWords[$number] ?? null;
 
-        if(!$word){
-            return $this->redirectToRoute('magic_number');
+        if ($number < 1 || $number > 25) {
+            return $this->render('error.html.twig',[ 
+                'message' => 'Numero fuera de rango, la aplicación no reconoce el número mágico,
+                si no quieres tener 13 años de mala suerte revierte este maleficio pulsando en generar nuevo número.',
+                'appName' => 'DGRMagicSymfony',
+            ]);
         }
 
         return $this->render('magic_word.html.twig',[
@@ -71,11 +75,21 @@ class MagicController extends AbstractController{
             'magicWord' => $word,
             'appName' => 'DGRMagicSymfony',
         ]);
+
     }
 
     #[Route('/dictionary/{word}', name: 'dictionary')]
     public function dictionary($word): Response{
-        $uppercaseWord = strtoupper($word);
+        $uppercaseWord = mb_strtoupper($word);
+
+        try {
+            $definition = $this->getDefinition($uppercaseWord);
+        } catch (\Exception $e) {
+            return $this->render('error.html.twig', [
+                'message' => 'Palabra fuera de rango, la aplicación no reconoce la palabra mágica. Si no quieres tener 13 años de mala suerte, revierte este maleficio pulsando en generar nuevo número.',
+                'appName' => 'DGRMagicSymfony',
+            ]);
+        }
 
 
         return $this->render('dictionary.html.twig',[
@@ -113,8 +127,8 @@ class MagicController extends AbstractController{
             'SIMPLICIDAD' => 'La simplicidad es la cualidad de ser simple y fácil de entender.',
             'RESILIENCIA' => 'La resiliencia es la capacidad de superar adversidades y adaptarse al cambio.',
         ];
-
-        return $definitions[$word] ?? 'No hay definición disponible.';
+    
+        return $definitions[$word];
     }
     
 }
